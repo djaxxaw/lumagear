@@ -25,6 +25,33 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   if (!productResult) notFound();
   const product = productResult;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.images,
+    brand: { "@type": "Brand", name: "LumaGear" },
+    offers: {
+      "@type": "Offer",
+      price: product.price.toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `https://lumagear.vercel.app/products/${product.slug}`,
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
+        deliveryTime: { "@type": "ShippingDeliveryTime", transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 7, unitCode: "DAY" } },
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.rating.toString(),
+      reviewCount: product.reviewCount.toString(),
+      bestRating: "5",
+    },
+  };
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -47,6 +74,8 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const savings = Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100);
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "32px 24px" }}>
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "32px" }}>
@@ -413,5 +442,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         </section>
       )}
     </div>
+    </>
   );
 }

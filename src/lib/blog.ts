@@ -215,7 +215,7 @@ The Wireless Lapel Mic Pro is the best option under $100 in 2026. Free shipping,
     category: "Lighting",
     readTime: "8 min read",
     publishedAt: "May 10, 2026",
-    image: "https://images.unsplash.com/photo-1552168324-d612d77725e3?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1673196649671-eb09066ad6c1?w=1200&q=80",
     content: `
 ## Why Lighting Is the #1 Creator Upgrade
 

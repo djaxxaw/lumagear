@@ -7,7 +7,7 @@ import SocialProofToast from "@/components/SocialProofToast";
 import EmailPopup from "@/components/EmailPopup";
 
 export const metadata: Metadata = {
-  verification: { google: "vupXu5fae7Pm7f3boqa4Q7ViN784PErChAqU6s7TBXA" },
+  verification: { google: ["vupXu5fae7Pm7f3boqa4Q7ViN784PErChAqU6s7TBXA", "2KX0PZ8joSU9fKFky3xr47d-siS-FgApYZdcOvQ-K7U"] },
   title: "LumaGear — Pro Creator Tools",
   description:
     "Premium content creator accessories — AI gimbals, wireless mics, RGB lights, and more. Free shipping on all orders.",
